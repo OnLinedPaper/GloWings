@@ -1,0 +1,12 @@
+1. Get msys2
+2. Update msys2: MSYS2 MINGW64 -> pacman -Syu -> [close window] -> MSYS2 MINGW64 -> pacman -Syu
+3. pacman -S mingw-w64-x86_64-{expat,smpeg2,SDL2_ttf,SDL2_mixer,SDL2_image,SDL2_gfx,SDL2_net,SDL2}
+4. Copy over source code
+5. Edit main.cpp to use 'WinMain' instead of 'main'
+6. Edit Makefile to have '-mwindows' in CXXFLAGS and LDFLAGS, also remove -g to turn off debugging flags
+7. change frameGenerator mkdir to NOT include 755 (this is ubuntu only)
+8. make
+9. ldd run.exe -> Copy DLLs that begin with /mingw64 to new folder
+10. cp run.exe [new folder]
+11. Copy assets and other files to new folder
+12. Distribute

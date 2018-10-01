@@ -1,0 +1,40 @@
+Name:
+Nick Reed
+
+Course:
+CPSC 4160 2D Game Engine Design
+
+Clemson Email Address:
+ndreed@g.clemson.edu
+
+Project no:
+5
+
+Project due date:
+2017-12-13
+
+Project description:
+Modify a game engine and extend its capabilities to include several additional
+features, including sound and an "endgame"
+
+The easiest part of this project:
+Adding sound, since Dr. Malloy's code was so compatible with his framework.
+
+Problems that I had in completing this project:
+Picking the right sound effects. The music took me a few hours to settle on
+and I'm still not completely satisfied with the sounds I have picked, but
+will be speaking with a friend later on to see what can be done.
+
+Additional notes:
+The game begins in "demo" mode, with collision turned off. The player can learn
+to move, shoot, and avoid overheating without fear of death. To start the game,
+press "r".
+The game does not have a "win" state, only an "end" state. When the player
+dies, they are given the opportunity to either quit with their score or halve
+it and keep going. Players choose when they are done, usually once they believe
+that no matter their skill they won't be able to top the score they have upon
+death.
+Because of this, an invincibility mode isn't needed to "complete" the game, but
+if you'd like to use one, set <debug> to true in the xml file and press "I" to
+toggle 7 seconds of invincibility.
+This game is compatible with a wired xbox 360 controller!

@@ -1,0 +1,744 @@
+<?xml version = "1.0"?>
+<GameData>
+<!-- screenTitle is also used to identify you and your animation.
+     So make sure to include your name as part of the screenTitle -->
+<title>GloWings</title>
+<maxStringSize>50</maxStringSize>
+
+<frameCapOn>false</frameCapOn>
+<period>17</period>
+<fps>45</fps>
+<debug>false</debug>
+
+<maxFrames>2000</maxFrames>
+<username>ndreed</username>
+
+<!-- ==== display elements ================================================ -->
+
+<view>
+    <!-- window dimensions -->
+    <width>1920</width>
+    <height>1080</height>
+
+    <!-- fullscreen: set to 1 for fullscreen -->
+        <!-- (first, please set width and height to your screen dimensions) -->
+    <fullscreen>1</fullscreen>
+</view>
+
+<world>
+    <!-- game world dimensions -->
+    <width>3000</width>
+    <height>3000</height>
+</world>
+
+<!-- ==== NPC count elements ============================================== -->
+
+<entityCount>
+
+    <!--How many darts are present-->
+    <dart>20</dart>
+
+    <!--How many birds are present-->
+    <bird>40</bird>
+
+    <!--Whether or not a behemoth is present-->
+    <behemothPresent>true</behemothPresent>
+
+    <!-- How long it takes for the enemies to spawn -->
+        <!-- (40 ticks = 1 second) -->
+    <spawnTicks>400</spawnTicks>
+
+    <!-- How long between "pulses" the enemies spawn -->
+    <spawnDelay>120</spawnDelay>
+
+    <waveDifficultyMultiplier>.6</waveDifficultyMultiplier>
+    <bonusWaveDuration>1200</bonusWaveDuration>
+
+    <healthPickupDropRate>20</healthPickupDropRate>
+    <cooldownPickupDropRate>4</cooldownPickupDropRate>
+
+</entityCount>
+
+<!-- ==== player behavior elements ======================================== -->
+
+<playerAttrs>
+
+    <score>0</score>
+
+    <movementTraits>
+        <MaxSpeed>500</MaxSpeed>
+        <Acceleration>30</Acceleration>
+        <Damping>0.96</Damping>
+        <overheatPenalty>.625</overheatPenalty>
+    </movementTraits>
+
+    <healthTraits>
+        <health>1000</health>
+        <damage>1</damage>
+        <respawnTime>300</respawnTime>
+        <invincibilityFrames>200</invincibilityFrames>
+    </healthTraits>
+
+    <heatTraits>
+        <!--Heat builds up as the player shoots or uses the shield-->
+
+        <!--Max heat the player can utilize-->
+        <maxHeat>400</maxHeat>
+        <!--How fast heat units are returned-->
+        <coolRate>4</coolRate>
+        <!--If all heat units are used, how long user must wait to shoot or
+            shield again-->
+        <overheatPenalty>2</overheatPenalty>
+    </heatTraits>
+
+    <projectileTraits>
+        <primary>
+            <bullet>beam</bullet>
+            <fireRate>20</fireRate>
+            <spread>40</spread>
+            <heatRateShoot>6</heatRateShoot>
+        </primary>
+        <secondary>
+            <bullet>laser</bullet>
+            <fireRate>600</fireRate>
+            <spread>1</spread>
+            <heatRateShoot>125</heatRateShoot>
+        </secondary>
+    </projectileTraits>
+
+</playerAttrs>
+
+<!-- ==== player projectile attributes ==================================== -->
+
+<beamAttrs>
+
+    <score>0</score>
+
+    <distance>2000</distance>
+    <maxTicks>1600</maxTicks>
+
+    <movementTraits>
+        <speed>600</speed>
+        <acceleration>1.02</acceleration>
+    </movementTraits>
+
+    <healthTraits>
+        <health>1</health>
+        <damage>4</damage>
+    </healthTraits>
+
+</beamAttrs>
+
+<laserAttrs>
+
+    <score>0</score>
+
+    <distance>2000</distance>
+    <maxTicks>1600</maxTicks>
+
+    <movementTraits>
+        <speed>1800</speed>
+        <acceleration>1.02</acceleration>
+    </movementTraits>
+
+    <healthTraits>
+        <health>65535</health>
+        <damage>20</damage>
+    </healthTraits>
+
+</laserAttrs>
+
+<!-- ==== bird behavior elements ========================================== -->
+
+<birdAttrs>
+
+    <score>200</score>
+
+
+    <!--How far a bird can see other birds to flock-->
+    <neighborRadius>240</neighborRadius>
+
+    <!--How close another bird can get before this one panics-->
+    <panicRadius>100</panicRadius>
+
+
+    <!--Max bird speed-->
+    <maxSpeed>500</maxSpeed>
+
+    <!--Bird speed damper, for when they get too fast-->
+    <damping>1.1</damping>
+
+
+    <healthTraits>
+        <health>100</health>
+        <damage>7</damage>
+    </healthTraits>
+
+    <!--NOTE: these values are inverted; 1 is strong and 10 is weak-->
+
+    <!--How strongly birds are attracted to one another-->
+    <coherence>8</coherence>
+
+    <!--How likely birds are to fly the same direction as the flock-->
+    <alignment>1</alignment>
+
+    <!--How strongly the birds move apart when they get too close-->
+    <separation>1.9</separation>
+
+    <!--How strongly the birds avoid walls-->
+    <avoidance>10</avoidance>
+
+</birdAttrs>
+
+<!-- ==== behemoth behavior elements ====================================== -->
+
+<behemothAttrs>
+
+    <score>5000</score>
+
+
+    <observerTraits>
+        <!--How far away a behemoth can detect
+            a player and start running away-->
+        <panicRadius>800</panicRadius>
+    </observerTraits>
+
+    <movementTraits>
+        <!--How fast a behemoth can move-->
+        <maxSpeed>120</maxSpeed>
+        <!--How quickly a behemoth can change directions-->
+        <acceleration>1</acceleration>
+    </movementTraits>
+
+    <healthTraits>
+        <health>3000</health>
+        <damage>40</damage>
+    </healthTraits>
+
+    <childTraits>
+        <shieldCount>4</shieldCount>
+        <shieldSpawnDelay>400</shieldSpawnDelay>
+        <seekerCount>1</seekerCount>
+        <miteCount>300</miteCount>
+    </childTraits>
+
+</behemothAttrs>
+
+<!-- ==== "shield" entity behaviors ======================================= -->
+
+<shieldAttrs>
+
+    <score>100</score>
+
+
+    <movementTraits>
+        <maxSpeed>200</maxSpeed>
+        <orbitRadius>400</orbitRadius>
+        <panicRadius>200</panicRadius>
+        <intercedeRadius>600</intercedeRadius>
+
+        <protection>8</protection>
+        <avoidance>3</avoidance>
+        <jitter>8</jitter>
+        <spacing>8</spacing>
+        <intercession>8</intercession>
+    </movementTraits>
+
+    <healthTraits>
+        <health>1000</health>
+        <damage>4</damage>
+    </healthTraits>
+
+</shieldAttrs>
+
+<!-- ==== dart behavior elements ========================================== -->
+
+<dartAttrs>
+
+    <score>100</score>
+
+
+    <observerTraits>
+        <!--How far away a dart can detect a player and dive bomb them-->
+        <seekRadius>400</seekRadius>
+    </observerTraits>
+
+    <movementTraits>
+        <!--How fast a dart can move-->
+        <maxSpeed>600</maxSpeed>
+        <!--How quickly a dart can change directions-->
+        <acceleration>30</acceleration>
+    </movementTraits>
+
+    <healthTraits>
+        <health>10</health>
+        <damage>10</damage>
+    </healthTraits>
+
+</dartAttrs>
+
+<!-- ==== seeker behavior elements ======================================== -->
+
+<seekerAttrs>
+
+    <score>2500</score>
+
+
+    <observerTraits>
+        <!--How far away a seeker can detect a player and dive bomb them-->
+        <seekRadius>65535</seekRadius>
+    </observerTraits>
+
+    <movementTraits>
+        <!--How fast a seeker can move-->
+        <maxSpeed>750</maxSpeed>
+        <!--How quickly a seeker can change directions-->
+        <acceleration>50</acceleration>
+
+        <oscillationPeriod>8</oscillationPeriod>
+        <oscillationIntensity>750</oscillationIntensity>
+    </movementTraits>
+
+    <healthTraits>
+        <health>250</health>
+        <damage>15</damage>
+    </healthTraits>
+
+</seekerAttrs>
+
+<!-- ==== mite behavior elements ========================================== -->
+
+<miteAttrs>
+
+    <score>10</score>
+
+
+    <observerTraits>
+        <!--How far away a seeker can detect a player and dive bomb them-->
+        <seekRadius>65535</seekRadius>
+    </observerTraits>
+
+    <movementTraits>
+        <!--How fast a seeker can move-->
+        <maxSpeed>200</maxSpeed>
+        <!--How quickly a seeker can change directions-->
+        <acceleration>50</acceleration>
+
+        <oscillationPeriod>1</oscillationPeriod>
+        <oscillationIntensity>150</oscillationIntensity>
+    </movementTraits>
+
+    <healthTraits>
+        <health>16</health>
+        <damage>2</damage>
+    </healthTraits>
+
+</miteAttrs>
+
+<!-- ==== health pickup behavior elements ================================= -->
+
+<healthPickupAttrs>
+
+    <score>0</score>
+
+    <movementTraits>
+        <maxSpeed>0</maxSpeed>
+        <acceleration>0</acceleration>
+    </movementTraits>
+
+    <healthTraits>
+        <health>1</health>
+        <damage>0</damage>
+    </healthTraits>
+
+</healthPickupAttrs>
+
+<!-- ==== cooldown pickup behavior elements =============================== -->
+
+<cooldownPickupAttrs>
+
+    <score>0</score>
+
+    <movementTraits>
+        <maxSpeed>0</maxSpeed>
+        <acceleration>0</acceleration>
+    </movementTraits>
+
+    <healthTraits>
+        <health>1</health>
+        <damage>0</damage>
+    </healthTraits>
+
+</cooldownPickupAttrs>
+
+<!-- ==== reticle dummy elements ========================================== -->
+
+<reticleAttrs>
+
+    <score>0</score>
+
+    <!--Dummy values, since reticle is technically a collisionless entity-->
+    <healthTraits>
+        <health>1</health>
+        <damage>0</damage>
+    </healthTraits>
+</reticleAttrs>
+
+
+<!-- ==== miscellaneous elements ========================================== -->
+    <!--(odds, ends, and things to sort later)-->
+
+<hudAttrs>
+    <visibleOnStart>true</visibleOnStart>
+
+    <timeout>100</timeout>
+
+    <!--width and height of each HUD bar-->
+    <healthBar>
+        <!--top left corner-->
+        <xLoc>-1</xLoc>
+        <yLoc>-16</yLoc>
+        <width>62</width>
+        <height>7</height>
+    </healthBar>
+    <heatBar>
+        <!--top left corner-->
+        <xLoc>-1</xLoc>
+        <yLoc>74</yLoc>
+        <width>42</width>
+        <height>7</height>
+    </heatBar>
+    <heatWarn>
+        <!--top left corner-->
+        <xLoc>50</xLoc>
+        <yLoc>70</yLoc>
+        <width>16</width>
+        <height>16</height>
+        <interval>4</interval>
+    </heatWarn>
+</hudAttrs>
+
+<!-- ==== assets ========================================================== -->
+
+<starfield>
+    <file>assets/starfield.png</file>
+    <factor>4</factor>
+    <transparency>false</transparency>
+</starfield>
+
+<starfog>
+    <file>assets/starfog.png</file>
+    <factor>2</factor>
+    <transparency>true</transparency>
+</starfog>
+
+<starfront>
+    <file>assets/starfront.png</file>
+    <factor>1</factor>
+    <transparency>true</transparency>
+</starfront>
+
+<font name="font">
+    <file>fonts/hybrid_o.ttf</file>
+    <size>36</size>
+    <red>0</red>
+    <green>255</green>
+    <blue>255</blue>
+    <alpha>0</alpha>
+</font>
+
+<bird>
+    <file>assets/bird.png</file>
+    <startLoc x="227" y="240"/>
+    <frames>6</frames>
+    <imageWidth>48</imageWidth>
+    <imageHeight>48</imageHeight>
+    <frameInterval>200</frameInterval>
+    <speedX>300</speedX>
+    <speedY>300</speedY>
+    <transparency>true</transparency>
+    <chunkAttrs>
+        <score>0</score>
+        <healthTraits>
+            <health>1</health>
+            <damage>0</damage>
+        </healthTraits>
+        <size>9</size>
+        <distance>200</distance>
+        <maxTicks>4800</maxTicks>
+  </chunkAttrs>
+</bird>
+
+<dart>
+    <file>assets/dart.png</file>
+    <startLoc x="227" y = "240"/>
+    <frames>4</frames>
+    <imageWidth>24</imageWidth>
+    <imageHeight>24</imageHeight>
+    <frameInterval>100</frameInterval>
+    <speedX>300</speedX>
+    <speedY>300</speedY>
+    <transparency>true</transparency>
+    <chunkAttrs>
+        <score>0</score>
+        <healthTraits>
+            <health>1</health>
+            <damage>0</damage>
+        </healthTraits>
+        <size>9</size>
+        <distance>200</distance>
+        <maxTicks>4800</maxTicks>
+  </chunkAttrs>
+</dart>
+
+<seeker>
+    <file>assets/seeker.png</file>
+    <startLoc x="227" y = "240"/>
+    <frames>4</frames>
+    <imageWidth>32</imageWidth>
+    <imageHeight>36</imageHeight>
+    <frameInterval>300</frameInterval>
+    <speedX>300</speedX>
+    <speedY>300</speedY>
+    <transparency>true</transparency>
+    <chunkAttrs>
+        <score>0</score>
+        <healthTraits>
+            <health>1</health>
+            <damage>0</damage>
+        </healthTraits>
+        <size>9</size>
+        <distance>800</distance>
+        <maxTicks>15000</maxTicks>
+  </chunkAttrs>
+</seeker>
+
+<mite>
+    <file>assets/mite.png</file>
+    <startLoc x="227" y = "240"/>
+    <frames>4</frames>
+    <imageWidth>16</imageWidth>
+    <imageHeight>16</imageHeight>
+    <frameInterval>75</frameInterval>
+    <speedX>300</speedX>
+    <speedY>300</speedY>
+    <transparency>true</transparency>
+    <chunkAttrs>
+        <score>0</score>
+        <healthTraits>
+            <health>1</health>
+            <damage>0</damage>
+        </healthTraits>
+        <size>4</size>
+        <distance>200</distance>
+        <maxTicks>4000</maxTicks>
+  </chunkAttrs>
+</mite>
+
+<player>
+    <file>assets/glowship.png</file>
+    <startLoc x="300" y = "300"/>
+    <frames>4</frames>
+    <imageWidth>64</imageWidth>
+    <imageHeight>64</imageHeight>
+    <frameInterval>200</frameInterval>
+    <speedX>0</speedX>
+    <speedY>0</speedY>
+    <transparency>true</transparency>
+    <chunkAttrs>
+        <score>0</score>
+        <healthTraits>
+            <health>1</health>
+            <damage>0</damage>
+        </healthTraits>
+        <size>9</size>
+        <distance>800</distance>
+        <maxTicks>20000</maxTicks>
+  </chunkAttrs>
+</player>
+
+<beam>
+    <file>assets/beam.png</file>
+    <startLoc x="0" y="0"/>
+    <frames>4</frames>
+    <imageWidth>23</imageWidth>
+    <imageHeight>28</imageHeight>
+    <frameInterval>100</frameInterval>
+    <speedX>0</speedX>
+    <speedY>0</speedY>
+    <transparency>true</transparency>
+    <chunkAttrs>
+        <score>0</score>
+        <healthTraits>
+            <health>1</health>
+            <damage>0</damage>
+        </healthTraits>
+        <size>9</size>
+        <distance>200</distance>
+        <maxTicks>4800</maxTicks>
+  </chunkAttrs>
+</beam>
+
+<laser>
+    <file>assets/laser.png</file>
+    <startLoc x="0" y="0"/>
+    <frames>4</frames>
+    <imageWidth>23</imageWidth>
+    <imageHeight>70</imageHeight>
+    <frameInterval>100</frameInterval>
+    <speedX>0</speedX>
+    <speedY>0</speedY>
+    <transparency>true</transparency>
+    <chunkAttrs>
+        <score>0</score>
+        <healthTraits>
+            <health>1</health>
+            <damage>0</damage>
+        </healthTraits>
+        <size>9</size>
+        <distance>200</distance>
+        <maxTicks>4800</maxTicks>
+  </chunkAttrs>
+</laser>
+
+<behemoth>
+    <file>assets/behemoth.png</file>
+    <startLoc x="200" y="200"/>
+    <frames>4</frames>
+    <speedX>0</speedX>
+    <speedY>0</speedY>
+    <frameInterval>300</frameInterval>
+    <imageWidth>160</imageWidth>
+    <imageHeight>160</imageHeight>
+    <transparency>true</transparency>
+    <chunkAttrs>
+        <score>0</score>
+        <healthTraits>
+            <health>1</health>
+            <damage>0</damage>
+        </healthTraits>
+        <size>9</size>
+        <distance>800</distance>
+        <maxTicks>10000</maxTicks>
+  </chunkAttrs>
+</behemoth>
+
+<shield>
+    <file>assets/shieldSprite.png</file>
+    <startLoc x="0" y="0" />
+    <frames>1</frames>
+    <imageWidth>150</imageWidth>
+    <imageHeight>40</imageHeight>
+    <frameInterval>200</frameInterval>
+    <speedX>300</speedX>
+    <speedY>300</speedY>
+    <transparency>true</transparency>
+    <chunkAttrs>
+        <score>0</score>
+        <healthTraits>
+            <health>1</health>
+            <damage>0</damage>
+        </healthTraits>
+        <size>9</size>
+        <distance>200</distance>
+        <maxTicks>4800</maxTicks>
+  </chunkAttrs>
+</shield>
+
+<healthPickup>
+    <file>assets/healthPickup.png</file>
+    <startLoc x="0" y="0" />
+    <frames>4</frames>
+    <imageWidth>64</imageWidth>
+    <imageHeight>64</imageHeight>
+    <frameInterval>100</frameInterval>
+    <speedX>300</speedX>
+    <speedY>300</speedY>
+    <transparency>true</transparency>
+    <chunkAttrs>
+        <score>0</score>
+        <healthTraits>
+            <health>1</health>
+            <damage>0</damage>
+        </healthTraits>
+        <size>9</size>
+        <distance>100</distance>
+        <maxTicks>8000</maxTicks>
+  </chunkAttrs>
+</healthPickup>
+
+<cooldownPickup>
+    <file>assets/cooldownPickup.png</file>
+    <startLoc x="0" y="0" />
+    <frames>4</frames>
+    <imageWidth>48</imageWidth>
+    <imageHeight>48</imageHeight>
+    <frameInterval>100</frameInterval>
+    <speedX>300</speedX>
+    <speedY>300</speedY>
+    <transparency>true</transparency>
+    <chunkAttrs>
+        <score>0</score>
+        <healthTraits>
+            <health>1</health>
+            <damage>0</damage>
+        </healthTraits>
+        <size>9</size>
+        <distance>100</distance>
+        <maxTicks>8000</maxTicks>
+  </chunkAttrs>
+</cooldownPickup>
+
+<reticle>
+    <file>assets/reticle.png</file>
+    <startLoc x="0" y="0"/>
+    <frames>4</frames>
+    <speedX>0</speedX>
+    <speedY>0</speedY>
+    <frameInterval>400</frameInterval>
+    <imageWidth>40</imageWidth>
+    <imageHeight>40</imageHeight>
+    <transparency>true</transparency>
+    <chunkAttrs>
+        <score>0</score>
+        <healthTraits>
+            <health>1</health>
+            <damage>0</damage>
+        </healthTraits>
+        <size>9</size>
+        <distance>200</distance>
+        <maxTicks>4800</maxTicks>
+  </chunkAttrs>
+</reticle>
+
+<HUD>
+    <overlay>
+        <file>assets/HUD.png</file>
+        <transparency>false</transparency>
+    </overlay>
+    <okay>
+        <file>assets/heatokay.png</file>
+        <transparency>false</transparency>
+    </okay>
+    <warn>
+        <file>assets/heatwarn.png</file>
+        <transparency>false</transparency>
+    </warn>
+    <over>
+        <file>assets/heatover.png</file>
+        <transparency>false</transparency>
+    </over>
+    <chill>
+        <file>assets/heatChill.png</file>
+        <transparency>false</transparency>
+    </chill>
+</HUD>
+
+
+</GameData>
+
+<!--
+>>netflix and chillwave
+take flight
+
+-->
