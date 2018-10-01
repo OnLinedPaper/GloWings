@@ -1,0 +1,4 @@
+- add GITIGNORE
+- complie standalone executable for unix
+- compile standalone executable for windows
+- use different font libraries
