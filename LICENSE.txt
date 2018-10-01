@@ -1,0 +1,11 @@
+This software is provided without warranty of any kind. 
+
+All code is free and open source. You may use it in any way you see fit, including monetization. Please credit the original author and any contributors. 
+
+GloWings (c) Nicholas Reed 2017
+
+The music is NOT FREE TO USE, and is currently a PLACEHOLDER. "I Saw You In The Dining Room Today" (c) LAMB BEATZ PRODUCTIONS 2017. Please replace this music if you intend to sell this software.
+
+The font is NOT FREE TO USE, and is currently a PLACEHOLDER. "Hybrid" font family (c) Ola Björling / beyond design 1998. Please replace this font if you intend to sell this software.
+
+Thank you for playing! 
